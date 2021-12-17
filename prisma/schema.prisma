@@ -9,3 +9,77 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        Int        @id @default(autoincrement())
+  username  String     @unique
+  email     String     @unique
+  password  String
+  avatar    String?
+  programs  Program[]
+  likes     Like[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Exercise  Exercise[]
+}
+
+model Program {
+  id          Int        @id @default(autoincrement())
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    Int
+  templates   Template[]
+  description String?
+  hashtags    Hashtag[]
+  likes       Like[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Template {
+  id        Int        @id @default(autoincrement())
+  exercises Exercise[]
+  hashtags  Hashtag[]
+  Program   Program?   @relation(fields: [programId], references: [id])
+  programId Int?
+}
+
+model Exercise {
+  id         Int       @id @default(autoincrement())
+  author     User      @relation(fields: [authorId], references: [id])
+  authorId   Int
+  exercise   String    @unique
+  sets       Set[]
+  // break  Int
+  Template   Template? @relation(fields: [templateId], references: [id])
+  templateId Int?
+}
+
+model Set {
+  id         Int       @id @default(autoincrement())
+  weight     Int
+  rir        Int
+  rep        Int
+  Exercise   Exercise? @relation(fields: [exerciseId], references: [id])
+  exerciseId Int?
+}
+
+model Hashtag {
+  id        Int        @id @default(autoincrement())
+  hashtag   String     @unique
+  programs  Program[]
+  templates Template[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  program   Program  @relation(fields: [programId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  programId Int
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([programId, userId])
+}
