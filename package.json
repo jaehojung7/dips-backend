@@ -1,0 +1,36 @@
+{
+  "name": "dips-backend",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "nodemon --exec babel-node server",
+    "migrate": "npx prisma migrate dev",
+    "studio": "npx prisma studio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaehojung7/dips-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaehojung7/dips-backend/issues"
+  },
+  "homepage": "https://github.com/jaehojung7/dips-backend#readme",
+  "dependencies": {
+    "@graphql-tools/load-files": "^6.5.3",
+    "@graphql-tools/merge": "^8.2.1",
+    "@graphql-tools/schema": "^8.3.1",
+    "apollo-server": "^3.5.0",
+    "dotenv": "^10.0.0",
+    "graphql": "^15.8.0",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/node": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "prisma": "^3.6.0"
+  }
+}
