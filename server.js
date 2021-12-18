@@ -1,12 +1,12 @@
+// Always import and execute dotenv in the very beginning to use the virtualenv
 require("dotenv").config();
+
 import { ApolloServer } from "apollo-server";
-import { typeDefs, resolvers } from "./schema";
+import schema from "./schema";
 
 const PORT = process.env.PORT;
-
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema,
 });
 
 server
