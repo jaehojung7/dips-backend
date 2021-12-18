@@ -5,6 +5,7 @@ export default {
   Mutation: {
     createAccount: async (_, { username, email, password }) => {
       try {
+        // Check if username/email already exists
         const existingUser = await client.user.findFirst({
           where: {
             OR: [{ username }, { email }],
@@ -16,6 +17,7 @@ export default {
             error: "이미 사용중인 아이디/이메일입니다.",
           };
         } else {
+          // Create a new user with an encrypted password
           const encryptedPassword = await bcrypt.hash(password, 10);
           await client.user.create({
             data: {
