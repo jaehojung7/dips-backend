@@ -5,7 +5,7 @@ export default gql`
     id: Int!
     username: String!
     email: String!
-    # avatar: String
+    avatar: String
     # programs: [Program]
     createdAt: String!
     updatedAt: String!
