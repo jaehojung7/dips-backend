@@ -9,5 +9,6 @@ export default gql`
     # programs: [Program]
     createdAt: String!
     updatedAt: String!
+    isMyProfile: Boolean!
   }
 `;
