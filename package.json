@@ -2,7 +2,8 @@
   "name": "dips-backend",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon --exec babel-node server",
+    "preinstall": "npx npm-force-resolutions@0.0.3",
+    "dev": "nodemon --exec babel-node server --delay 1s",
     "migrate": "npx prisma migrate dev",
     "studio": "npx prisma studio",
     "start": "node server.js"
@@ -23,9 +24,12 @@
     "@graphql-tools/merge": "^8.2.1",
     "@graphql-tools/schema": "^8.3.1",
     "@prisma/client": "^3.6.0",
-    "apollo-server": "^3.5.0",
+    "apollo-server": "^2.25.2",
+    "apollo-server-express": "2.19",
+    "aws-sdk": "^2.1014.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
+    "express": "^4.17.2",
     "graphql": "^15.8.0",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.15"
@@ -37,5 +41,9 @@
     "prisma": "^3.6.0"
   },
   "main": "client.js",
-  "description": ""
+  "description": "",
+  "resolutions": {
+    "fs-capacitor": "3.0.0",
+    "graphql-upload": "^11.0.0"
+  }
 }
