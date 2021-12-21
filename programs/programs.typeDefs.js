@@ -4,22 +4,22 @@ export default gql`
   type Program {
     id: Int!
     user: User!
+    title: String!
     description: String
-    # hashtags: [Hashtag]
+    hashtags: [Hashtag]
     # likes: Int
     createdAt: String!
     updatedAt: String!
     isMine: Boolean!
     isLiked: Boolean!
   }
-  # type Hashtag {
-  #   id: Int!
-  #   hashtag: String!
-  #   photos(page: Int!): [Photo]
-  #   totalPhotos: Int!
-  #   createdAt: String!
-  #   updatedAt: String!
-  # }
+  type Hashtag {
+    id: Int!
+    hashtag: String!
+    programs(page: Int!): [Program]
+    createdAt: String!
+    updatedAt: String!
+  }
   # type Like {
   #   id: Int!
   #   photos: Photo!
