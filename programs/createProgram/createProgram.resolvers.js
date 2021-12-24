@@ -1,4 +1,4 @@
-import client from "../../client";
+import prisma from "../../prisma";
 import { protectedResolver } from "../../users/users.utils";
 
 export default {
@@ -7,7 +7,7 @@ export default {
       async (_, { title, description, isPrivate }, { loggedInUser }) => {
         try {
           // Check if an existing program has the same title
-          const existingProgram = await client.program.findFirst({
+          const existingProgram = await prisma.program.findFirst({
             where: { title },
           });
           if (existingProgram) {
@@ -29,7 +29,7 @@ export default {
 
           // Save program with parsed hashtags
           // Add program to the hashtags
-          await client.program.create({
+          await prisma.program.create({
             data: {
               title,
               description,

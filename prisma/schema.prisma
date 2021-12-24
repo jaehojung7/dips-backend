@@ -1,8 +1,8 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
+generator prisma {
+  provider = "prisma-prisma-js"
 }
 
 datasource db {
@@ -22,25 +22,35 @@ model User {
 }
 
 model Program {
-  id          Int       @id @default(autoincrement())
-  user        User      @relation(fields: [userId], references: [id])
-  userId      Int
-  title       String    @unique
-  description String?
-  hashtags    Hashtag[]
+  id              Int               @id @default(autoincrement())
+  user            User              @relation(fields: [userId], references: [id])
+  userId          Int
+  title           String            @unique
+  description     String?
+  hashtags        Hashtag[]
   // templates   Template[]
   // likes       Like[]
-  isPrivate   Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  isPrivate       Boolean           @default(false)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  ProgramHashtags ProgramHashtags[]
+}
+
+model ProgramHashtags {
+  id        Int      @id @default(autoincrement())
+  program   Program? @relation(fields: [programId], references: [id])
+  hashtag   Hashtag? @relation(fields: [hashtagId], references: [id])
+  programId Int?
+  hashtagId Int?
 }
 
 model Hashtag {
-  id        Int       @id @default(autoincrement())
-  hashtag   String    @unique
-  programs  Program[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id              Int               @id @default(autoincrement())
+  hashtag         String            @unique
+  programs        Program[]
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  ProgramHashtags ProgramHashtags[]
 }
 
 // model Template {

@@ -1,19 +1,29 @@
-import client from "../../client";
+import prisma from "../../prisma";
 
 export default {
   Query: {
-    seeHashtag: (_, { hashtag }) =>
-      client.hashtag.findUnique({
+    seeHashtag: (_, { hashtag }, { loggedInUser }) =>
+      prisma.hashtag.findUnique({
         where: {
           hashtag,
         },
-        include: {
-          programs: {
-            where: {
-              isPrivate: false,
-            },
-          },
-        },
+
+        // // I private programs of other users
+        // include: {
+        //   programs: {
+        //     where: {
+        //       // OR: [
+        //       //   {
+        //       //     user: {
+        //       //       id: loggedInUser != null ? loggedInUser.id : undefined,
+        //       //     },
+        //       //   },
+        //       //   { isPrivate: false },
+        //       // ],
+        //       isPrivate: false,
+        //     },
+        //   },
+        // },
       }),
   },
 };

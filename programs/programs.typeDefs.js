@@ -18,7 +18,7 @@ export default gql`
   type Hashtag {
     id: Int!
     hashtag: String!
-    programs(page: Int!): [Program]
+    programs: [Program]
     programCount: Int!
     createdAt: String!
     updatedAt: String!

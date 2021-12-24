@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import client from "../client";
+import prisma from "../prisma";
 
 // Function that returns the user, to whom the token has been issued
 export const getUser = async (token) => {
@@ -8,7 +8,7 @@ export const getUser = async (token) => {
       return null;
     }
     const { id } = await jwt.verify(token, process.env.SECRET_KEY);
-    const user = await client.user.findUnique({ where: { id } });
+    const user = await prisma.user.findUnique({ where: { id } });
     if (user) {
       return user;
     } else {

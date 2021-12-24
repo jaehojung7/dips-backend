@@ -1,10 +1,10 @@
-import client from "../client";
+import prisma from "../prisma";
 
 export default {
   Program: {
-    user: ({ userId }) => client.user.findUnique({ where: { id: userId } }),
+    user: ({ userId }) => prisma.user.findUnique({ where: { id: userId } }),
     hashtags: ({ id }) =>
-      client.hashtag.findMany({
+      prisma.hashtag.findMany({
         where: {
           programs: {
             some: {
@@ -22,8 +22,8 @@ export default {
   },
 
   Hashtag: {
-    programs: ({ id }, { page }) => {
-      return client.hashtag
+    programs: ({ id }) => {
+      return prisma.hashtag
         .findUnique({
           where: {
             id,
@@ -31,8 +31,10 @@ export default {
         })
         .programs();
     },
+
+    // Not working
     programCount: ({ id }) => {
-      client.program.count({
+      prisma.program.count({
         where: {
           hashtags: {
             some: {
