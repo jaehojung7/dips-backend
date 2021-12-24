@@ -2,10 +2,10 @@ import client from "../../client";
 
 export default {
   Query: {
-    seeProgram: (_, { id }) =>
+    seeProgram: async (_, { id }, { loggedInUser }) =>
       client.program.findUnique({
         where: {
-          id,
+          AND: [{ id }, { public: true }],
         },
       }),
   },

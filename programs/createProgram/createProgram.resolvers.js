@@ -4,7 +4,7 @@ import { protectedResolver } from "../../users/users.utils";
 export default {
   Mutation: {
     createProgram: protectedResolver(
-      async (_, { title, description }, { loggedInUser }) => {
+      async (_, { title, description, isPrivate }, { loggedInUser }) => {
         try {
           // Check if an existing program has the same title
           const existingProgram = await client.program.findFirst({
@@ -20,7 +20,7 @@ export default {
           // Parse description and create hashtags
           let hashtagObj = [];
           if (description) {
-            const hashtags = description.match(/#[\w]+/g);
+            const hashtags = description.match(/#[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\w]+/g);
             hashtagObj = hashtags.map((hashtag) => ({
               where: { hashtag },
               create: { hashtag },
@@ -33,6 +33,7 @@ export default {
             data: {
               title,
               description,
+              isPrivate,
               user: {
                 connect: {
                   id: loggedInUser.id,

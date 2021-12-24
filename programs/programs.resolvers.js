@@ -13,5 +13,34 @@ export default {
           },
         },
       }),
+    isMine: ({ userId }, _, { loggedInUser }) => {
+      if (!loggedInUser) {
+        return false;
+      }
+      return userId === loggedInUser.id;
+    },
+  },
+
+  Hashtag: {
+    programs: ({ id }, { page }) => {
+      return client.hashtag
+        .findUnique({
+          where: {
+            id,
+          },
+        })
+        .programs();
+    },
+    programCount: ({ id }) => {
+      client.program.count({
+        where: {
+          hashtags: {
+            some: {
+              id,
+            },
+          },
+        },
+      });
+    },
   },
 };

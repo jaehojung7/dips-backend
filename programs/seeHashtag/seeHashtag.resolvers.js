@@ -2,10 +2,10 @@ import client from "../../client";
 
 export default {
   Query: {
-    seeProfile: (_, { username }) =>
-      client.user.findUnique({
+    seeHashtag: (_, { hashtag }) =>
+      client.hashtag.findUnique({
         where: {
-          username,
+          hashtag,
         },
         include: {
           programs: {

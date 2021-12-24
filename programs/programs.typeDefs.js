@@ -7,7 +7,9 @@ export default gql`
     title: String!
     description: String
     hashtags: [Hashtag]
+    # templates: [Template]
     # likes: Int
+    isPrivate: Boolean!
     createdAt: String!
     updatedAt: String!
     isMine: Boolean!
@@ -17,6 +19,7 @@ export default gql`
     id: Int!
     hashtag: String!
     programs(page: Int!): [Program]
+    programCount: Int!
     createdAt: String!
     updatedAt: String!
   }
