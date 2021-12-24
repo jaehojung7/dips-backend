@@ -6,8 +6,9 @@ export default gql`
     username: String!
     email: String!
     avatar: String
-    # programs: [Program]
+    programs: [Program]
     createdAt: String!
     updatedAt: String!
+    isMyProfile: Boolean!
   }
 `;
