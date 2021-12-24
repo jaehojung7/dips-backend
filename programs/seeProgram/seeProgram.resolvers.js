@@ -1,5 +1,6 @@
 import prisma from "../../prisma";
 
+// Return program only if it belongs to loggedInUser or is public
 export default {
   Query: {
     seeProgram: async (_, { id }, { loggedInUser }) =>

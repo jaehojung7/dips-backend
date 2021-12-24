@@ -1,5 +1,6 @@
 import prisma from "../../prisma";
 
+// This query might not be used on the client side
 export default {
   Query: {
     searchUsers: async (_, { keyword, lastId }) =>

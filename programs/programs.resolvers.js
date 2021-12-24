@@ -19,6 +19,10 @@ export default {
       }
       return userId === loggedInUser.id;
     },
+    likeCount: ({ id }) =>
+      prisma.like.count({
+        where: { programId: id },
+      }),
   },
 
   Hashtag: {
@@ -32,17 +36,17 @@ export default {
         .programs();
     },
 
-    // Not working
-    programCount: ({ id }) => {
-      prisma.program.count({
-        where: {
-          hashtags: {
-            some: {
-              id,
-            },
-          },
-        },
-      });
-    },
+    // // Not working
+    // programCount: ({ id }) => {
+    //   prisma.program.count({
+    //     where: {
+    //       hashtags: {
+    //         some: {
+    //           id,
+    //         },
+    //       },
+    //     },
+    //   });
+    // },
   },
 };

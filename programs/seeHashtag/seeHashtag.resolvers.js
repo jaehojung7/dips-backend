@@ -1,29 +1,14 @@
 import prisma from "../../prisma";
 
+// This query cannot filter out private programs
+// searchPrograms should be used instead for selective search
 export default {
   Query: {
-    seeHashtag: (_, { hashtag }, { loggedInUser }) =>
+    seeHashtag: (_, { hashtag }) =>
       prisma.hashtag.findUnique({
         where: {
           hashtag,
         },
-
-        // // I private programs of other users
-        // include: {
-        //   programs: {
-        //     where: {
-        //       // OR: [
-        //       //   {
-        //       //     user: {
-        //       //       id: loggedInUser != null ? loggedInUser.id : undefined,
-        //       //     },
-        //       //   },
-        //       //   { isPrivate: false },
-        //       // ],
-        //       isPrivate: false,
-        //     },
-        //   },
-        // },
       }),
   },
 };

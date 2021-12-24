@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator prisma {
-  provider = "prisma-prisma-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -17,40 +17,43 @@ model User {
   password  String
   avatar    String?
   programs  Program[]
+  likes     Like[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
 
 model Program {
-  id              Int               @id @default(autoincrement())
-  user            User              @relation(fields: [userId], references: [id])
-  userId          Int
-  title           String            @unique
-  description     String?
-  hashtags        Hashtag[]
+  id          Int       @id @default(autoincrement())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      Int
+  title       String    @unique
+  description String?
+  hashtags    Hashtag[]
   // templates   Template[]
-  // likes       Like[]
-  isPrivate       Boolean           @default(false)
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  ProgramHashtags ProgramHashtags[]
-}
-
-model ProgramHashtags {
-  id        Int      @id @default(autoincrement())
-  program   Program? @relation(fields: [programId], references: [id])
-  hashtag   Hashtag? @relation(fields: [hashtagId], references: [id])
-  programId Int?
-  hashtagId Int?
+  likes       Like[]
+  isPrivate   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Hashtag {
-  id              Int               @id @default(autoincrement())
-  hashtag         String            @unique
-  programs        Program[]
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  ProgramHashtags ProgramHashtags[]
+  id        Int       @id @default(autoincrement())
+  hashtag   String    @unique
+  programs  Program[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  program   Program  @relation(fields: [programId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  programId Int
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([programId, userId])
 }
 
 // model Template {
@@ -79,16 +82,4 @@ model Hashtag {
 //   rep        Int
 //   Exercise   Exercise? @relation(fields: [exerciseId], references: [id])
 //   exerciseId Int?
-// }
-
-// model Like {
-//   id        Int      @id @default(autoincrement())
-//   program   Program  @relation(fields: [programId], references: [id])
-//   user      User     @relation(fields: [userId], references: [id])
-//   programId Int
-//   userId    Int
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-
-//   @@unique([programId, userId])
 // }
