@@ -1,12 +1,12 @@
 import bcrypt from "bcrypt";
-import client from "../../client";
+import prisma from "../../prisma";
 
 export default {
   Mutation: {
     createAccount: async (_, { username, email, password }) => {
       try {
         // Check if username/email already exists
-        const existingUser = await client.user.findFirst({
+        const existingUser = await prisma.user.findFirst({
           where: {
             OR: [{ username }, { email }],
           },
@@ -19,7 +19,7 @@ export default {
         } else {
           // Create a new user with an encrypted password
           const encryptedPassword = await bcrypt.hash(password, 10);
-          await client.user.create({
+          await prisma.user.create({
             data: {
               username,
               email,

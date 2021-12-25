@@ -1,18 +1,13 @@
-import client from "../../client";
+import prisma from "../../prisma";
 
+// This query cannot filter out private programs
+// searchPrograms should be used instead for selective search
 export default {
   Query: {
     seeHashtag: (_, { hashtag }) =>
-      client.hashtag.findUnique({
+      prisma.hashtag.findUnique({
         where: {
           hashtag,
-        },
-        include: {
-          programs: {
-            where: {
-              isPrivate: false,
-            },
-          },
         },
       }),
   },

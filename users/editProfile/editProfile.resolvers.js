@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import client from "../../client";
+import prisma from "../../prisma";
 import { protectedResolver } from "../users.utils";
 import { uploadToS3 } from "../../common/common.utils";
 
@@ -24,7 +24,7 @@ export default {
         }
 
         console.log(avatarUrl);
-        const updatedUser = await client.user.update({
+        const updatedUser = await prisma.user.update({
           where: {
             id: loggedInUser.id,
           },

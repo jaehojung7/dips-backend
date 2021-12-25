@@ -1,3 +1,5 @@
+import prisma from "../prisma";
+
 export default {
   User: {
     // Resolvers for computed fields (fields that do not exist in DB)

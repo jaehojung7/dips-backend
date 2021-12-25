@@ -1,12 +1,12 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import client from "../../client";
+import prisma from "../../prisma";
 
 export default {
   Mutation: {
     login: async (_, { email, password }) => {
       // Find a user with the entered email
-      const user = await client.user.findFirst({ where: { email } });
+      const user = await prisma.user.findFirst({ where: { email } });
       if (!user) {
         return {
           ok: false,

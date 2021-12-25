@@ -1,10 +1,10 @@
-import client from "../client";
+import prisma from "../prisma";
 
 export default {
   Program: {
-    user: ({ userId }) => client.user.findUnique({ where: { id: userId } }),
+    user: ({ userId }) => prisma.user.findUnique({ where: { id: userId } }),
     hashtags: ({ id }) =>
-      client.hashtag.findMany({
+      prisma.hashtag.findMany({
         where: {
           programs: {
             some: {
@@ -19,11 +19,15 @@ export default {
       }
       return userId === loggedInUser.id;
     },
+    likeCount: ({ id }) =>
+      prisma.like.count({
+        where: { programId: id },
+      }),
   },
 
   Hashtag: {
-    programs: ({ id }, { page }) => {
-      return client.hashtag
+    programs: ({ id }) => {
+      return prisma.hashtag
         .findUnique({
           where: {
             id,
@@ -31,16 +35,18 @@ export default {
         })
         .programs();
     },
-    programCount: ({ id }) => {
-      client.program.count({
-        where: {
-          hashtags: {
-            some: {
-              id,
-            },
-          },
-        },
-      });
-    },
+
+    // // Not working
+    // programCount: ({ id }) => {
+    //   prisma.program.count({
+    //     where: {
+    //       hashtags: {
+    //         some: {
+    //           id,
+    //         },
+    //       },
+    //     },
+    //   });
+    // },
   },
 };

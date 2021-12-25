@@ -8,25 +8,25 @@ export default gql`
     description: String
     hashtags: [Hashtag]
     # templates: [Template]
-    # likes: Int
     isPrivate: Boolean!
     createdAt: String!
     updatedAt: String!
     isMine: Boolean!
     isLiked: Boolean!
+    likeCount: Int
   }
   type Hashtag {
     id: Int!
     hashtag: String!
-    programs(page: Int!): [Program]
-    programCount: Int!
+    programs: [Program]
+    # programCount: Int!
     createdAt: String!
     updatedAt: String!
   }
-  # type Like {
-  #   id: Int!
-  #   photos: Photo!
-  #   createdAt: String!
-  #   updatedAt: String!
-  # }
+  type Like {
+    id: Int!
+    programs: Program!
+    createdAt: String!
+    updatedAt: String!
+  }
 `;

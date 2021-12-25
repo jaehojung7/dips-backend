@@ -1,7 +1,7 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
+generator prisma {
   provider = "prisma-client-js"
 }
 
@@ -17,6 +17,7 @@ model User {
   password  String
   avatar    String?
   programs  Program[]
+  likes     Like[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
@@ -29,7 +30,7 @@ model Program {
   description String?
   hashtags    Hashtag[]
   // templates   Template[]
-  // likes       Like[]
+  likes       Like[]
   isPrivate   Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -41,6 +42,18 @@ model Hashtag {
   programs  Program[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  program   Program  @relation(fields: [programId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  programId Int
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([programId, userId])
 }
 
 // model Template {
@@ -69,16 +82,4 @@ model Hashtag {
 //   rep        Int
 //   Exercise   Exercise? @relation(fields: [exerciseId], references: [id])
 //   exerciseId Int?
-// }
-
-// model Like {
-//   id        Int      @id @default(autoincrement())
-//   program   Program  @relation(fields: [programId], references: [id])
-//   user      User     @relation(fields: [userId], references: [id])
-//   programId Int
-//   userId    Int
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-
-//   @@unique([programId, userId])
 // }
