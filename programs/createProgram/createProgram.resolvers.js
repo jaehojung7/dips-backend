@@ -1,5 +1,6 @@
 import prisma from "../../prisma";
 import { protectedResolver } from "../../users/users.utils";
+import { processHashtags } from "../programs.utils";
 
 export default {
   Mutation: {
@@ -17,16 +18,6 @@ export default {
             };
           }
 
-          // Parse description and create hashtags
-          let hashtagObj = [];
-          if (description) {
-            const hashtags = description.match(/#[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\w]+/g);
-            hashtagObj = hashtags.map((hashtag) => ({
-              where: { hashtag },
-              create: { hashtag },
-            }));
-          }
-
           // Save program with parsed hashtags
           // Add program to the hashtags
           await prisma.program.create({
@@ -41,7 +32,7 @@ export default {
               },
               ...(hashtagObj.length > 0 && {
                 hashtags: {
-                  connectOrCreate: hashtagObj,
+                  connectOrCreate: processHashtags(description),
                 },
               }),
             },

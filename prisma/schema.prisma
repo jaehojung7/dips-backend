@@ -58,10 +58,9 @@ model Like {
 
 // model Template {
 //   id        Int        @id @default(autoincrement())
-//   exercises Exercise[]
-//   hashtags  Hashtag[]
 //   Program   Program?   @relation(fields: [programId], references: [id])
 //   programId Int?
+//   exercises Exercise[]
 // }
 
 // model Exercise {
