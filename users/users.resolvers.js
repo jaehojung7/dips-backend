@@ -11,5 +11,8 @@ export default {
       }
       return id === loggedInUser.id;
     },
+
+    // Resolvers for other fields
+    programs: ({ id }) => prisma.user.findUnique({ where: { id } }).programs(),
   },
 };

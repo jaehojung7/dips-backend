@@ -15,18 +15,18 @@ export default {
           error: "Program not found",
         };
       }
-      const likeMatch = {
+      const likeObj = {
         programId_userId: {
           userId: loggedInUser.id,
           programId: id,
         },
       };
       const like = await prisma.like.findUnique({
-        where: likeMatch,
+        where: likeObj,
       });
       if (like) {
         await prisma.like.delete({
-          where: likeMatch,
+          where: likeObj,
         });
       } else {
         await prisma.like.create({

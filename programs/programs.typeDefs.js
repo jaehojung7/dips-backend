@@ -7,7 +7,7 @@ export default gql`
     title: String!
     description: String
     hashtags: [Hashtag]
-    # templates: [Template]
+    templates: [Template]
     isPrivate: Boolean!
     createdAt: String!
     updatedAt: String!
@@ -25,7 +25,24 @@ export default gql`
   }
   type Like {
     id: Int!
-    programs: Program!
+    program: Program!
+    createdAt: String!
+    updatedAt: String!
+  }
+  type Template {
+    id: Int!
+    program: Program!
+    title: String!
+    templateSets: [TemplateSet]
+    createdAt: String!
+    updatedAt: String!
+  }
+  type TemplateSet {
+    id: Int!
+    template: Template!
+    exercises: [String]
+    setCount: Int!
+    rir: Int
     createdAt: String!
     updatedAt: String!
   }

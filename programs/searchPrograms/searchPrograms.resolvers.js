@@ -12,11 +12,13 @@ export default {
             {
               title: {
                 contains: keyword,
+                mode: "insensitive",
               },
             },
             {
               description: {
                 contains: keyword,
+                mode: "insensitive",
               },
             },
           ],

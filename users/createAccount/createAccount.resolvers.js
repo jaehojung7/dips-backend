@@ -14,7 +14,7 @@ export default {
         if (existingUser) {
           return {
             ok: false,
-            error: "이미 사용중인 아이디/이메일입니다.",
+            error: "이메일 또는 닉네임이 이미 사용 중입니다.",
           };
         } else {
           // Create a new user with an encrypted password
