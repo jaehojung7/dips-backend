@@ -25,7 +25,7 @@ export default {
             hashtagObj = processHashtags(description);
           }
 
-          await prisma.program.create({
+          const newProgram = await prisma.program.create({
             data: {
               title,
               description,
@@ -44,6 +44,7 @@ export default {
           });
           return {
             ok: true,
+            id: newProgram.id,
           };
         } catch (e) {
           return {

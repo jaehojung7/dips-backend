@@ -6,7 +6,7 @@ import { processHashtags } from "../programs.utils";
 export default {
   Mutation: {
     editProgram: protectedResolver(
-      async (_, { id, description }, { loggedInUser }) => {
+      async (_, { id, title, description }, { loggedInUser }) => {
         const existingProgram = await prisma.program.findFirst({
           where: {
             id,
@@ -28,15 +28,24 @@ export default {
             error: "프로그램을 찾을 수 없습니다.",
           };
         }
+
+        let hashtagObj = [];
+        if (description) {
+          hashtagObj = processHashtags(description);
+        } else {
+          description = "";
+        }
+
         await prisma.program.update({
           where: {
             id,
           },
           data: {
+            title,
             description,
             hashtags: {
               disconnect: existingProgram.hashtags,
-              connectOrCreate: processHashtags(description),
+              connectOrCreate: hashtagObj,
             },
           },
         });

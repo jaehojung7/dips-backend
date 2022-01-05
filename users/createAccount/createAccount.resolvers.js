@@ -19,7 +19,7 @@ export default {
         } else {
           // Create a new user with an encrypted password
           const encryptedPassword = await bcrypt.hash(password, 10);
-          await prisma.user.create({
+          const newUser = await prisma.user.create({
             data: {
               username,
               email,
@@ -28,6 +28,7 @@ export default {
           });
           return {
             ok: true,
+            id: newUser.id,
           };
         }
       } catch (e) {
