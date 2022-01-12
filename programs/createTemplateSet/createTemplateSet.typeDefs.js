@@ -3,11 +3,13 @@ import { gql } from "apollo-server";
 export default gql`
   type Mutation {
     createTemplateSet(
-      templateId: Int!
+      programId: Int!
+      templateIndex: Int!
       exercise: [String]
       setCount: Int!
-      rir: Int
-      recReps: [Int]
-    ): MutationResult!
+    ): # rir: Int
+    # minReps: Int
+    # maxReps: Int
+    MutationResult!
   }
 `;

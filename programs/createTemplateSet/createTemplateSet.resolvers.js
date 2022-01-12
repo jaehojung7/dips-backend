@@ -6,12 +6,13 @@ export default {
     createTemplateSet: protectedResolver(
       async (
         _,
-        { templateId, exercise, setCount, rir, recReps },
+        { programId, templateIndex, exercise, setCount },
         { loggedInUser }
       ) => {
-        const existingTemplate = await prisma.template.findUnique({
+        const existingTemplate = await prisma.template.findFirst({
           where: {
-            id: templateId,
+            programId,
+            templateIndex,
           },
           select: {
             id: true,
@@ -27,13 +28,14 @@ export default {
           data: {
             template: {
               connect: {
-                id: templateId,
+                id: existingTemplate.id,
               },
             },
             exercise,
             setCount,
-            rir,
-            recReps,
+            // rir,
+            // minReps,
+            // maxReps,
             // Let's think about if a templateSet has to be connected to a user
             // In this case, Prisma model has to be updated as well
             // user: {

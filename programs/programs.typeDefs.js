@@ -32,6 +32,7 @@ export default gql`
   type Template {
     id: Int!
     program: Program!
+    templateIndex: Int!
     title: String!
     templateSets: [TemplateSet]
     createdAt: String!
@@ -42,7 +43,9 @@ export default gql`
     template: Template!
     exercises: [String]
     setCount: Int!
-    rir: Int
+    # rir: Int
+    # minReps: Int
+    # maxReps: Int
     createdAt: String!
     updatedAt: String!
   }

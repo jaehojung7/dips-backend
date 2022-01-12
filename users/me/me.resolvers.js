@@ -9,7 +9,11 @@ export default {
           id: loggedInUser.id,
         },
         include: {
-          programs: true,
+          programs: {
+            include: {
+              templates: true,
+            },
+          },
         },
       })
     ),
