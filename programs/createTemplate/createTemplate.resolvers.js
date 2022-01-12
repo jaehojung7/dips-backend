@@ -4,7 +4,7 @@ import { protectedResolver } from "../../users/users.utils";
 export default {
   Mutation: {
     createTemplate: protectedResolver(
-      async (_, { programId, title }, { loggedInUser }) => {
+      async (_, { programId, templateIndex, title }, { loggedInUser }) => {
         const existingProgram = await prisma.program.findUnique({
           where: {
             id: programId,
@@ -21,12 +21,13 @@ export default {
         }
         const newTemplate = await prisma.template.create({
           data: {
-            title,
             program: {
               connect: {
                 id: programId,
               },
             },
+            templateIndex,
+            title,
             // Let's think about if a template has to be connected to a user
             // In this case, Prisma model has to be updated as well
             // user: {
@@ -38,7 +39,8 @@ export default {
         });
         return {
           ok: true,
-          id: newTemplate.id,
+          programId,
+          templateIndex,
         };
       }
     ),
