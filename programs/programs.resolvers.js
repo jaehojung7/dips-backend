@@ -2,6 +2,7 @@ import prisma from "../prisma";
 
 export default {
   Program: {
+    // Resolvers for relations
     user: ({ userId }) => prisma.user.findUnique({ where: { id: userId } }),
     hashtags: ({ id }) =>
       prisma.hashtag.findMany({
@@ -21,6 +22,8 @@ export default {
           },
         })
         .templates(),
+
+    // Relations for computed fields
     isMine: ({ userId }, _, { loggedInUser }) => {
       if (!loggedInUser) {
         return false;
@@ -34,6 +37,7 @@ export default {
   },
 
   Hashtag: {
+    // Resolvers for relations
     programs: ({ id }) => {
       return prisma.hashtag
         .findUnique({
@@ -56,5 +60,18 @@ export default {
     //     },
     //   });
     // },
+  },
+
+  Like: {
+    // Resolvers for relations
+    program: ({ id }) => {
+      return prisma.like
+        .findUnique({
+          where: {
+            id,
+          },
+        })
+        .program();
+    },
   },
 };

@@ -14,6 +14,11 @@ export default {
               templates: true,
             },
           },
+          likes: {
+            include: {
+              program: true,
+            },
+          },
         },
       })
     ),

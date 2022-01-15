@@ -7,6 +7,7 @@ export default gql`
     email: String!
     avatar: String
     programs: [Program]
+    likes: [Like]
     createdAt: String!
     updatedAt: String!
     isMyProfile: Boolean!
