@@ -13,6 +13,14 @@ export default {
           },
         },
       }),
+    templates: ({ id }) =>
+      prisma.program
+        .findUnique({
+          where: {
+            id,
+          },
+        })
+        .templates(),
     isMine: ({ userId }, _, { loggedInUser }) => {
       if (!loggedInUser) {
         return false;
