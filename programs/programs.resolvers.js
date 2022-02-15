@@ -15,13 +15,7 @@ export default {
         },
       }),
     templates: ({ id }) =>
-      prisma.program
-        .findUnique({
-          where: {
-            id,
-          },
-        })
-        .templates(),
+      prisma.program.findUnique({ where: { id } }).templates(),
 
     // Relations for computed fields
     isMine: ({ userId }, _, { loggedInUser }) => {
@@ -34,6 +28,12 @@ export default {
       prisma.like.count({
         where: { programId: id },
       }),
+  },
+
+  Template: {
+    // Resolvers for relations
+    templateSets: ({ id }) =>
+      prisma.template.findUnique({ where: { id } }).templateSets(),
   },
 
   Hashtag: {

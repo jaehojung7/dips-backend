@@ -11,7 +11,11 @@ export default {
         include: {
           programs: {
             include: {
-              templates: true,
+              templates: {
+                include: {
+                  templateSets: true,
+                },
+              },
             },
           },
           likes: {
