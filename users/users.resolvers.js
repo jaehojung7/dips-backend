@@ -6,6 +6,8 @@ export default {
     // These resolvers use root (User) information
     // Reminder: (root, args, context, info)
     programs: ({ id }) => prisma.user.findUnique({ where: { id } }).programs(),
+    exercises: ({ id }) =>
+      prisma.user.findUnique({ where: { id } }).exercises(),
     likes: ({ id }) => prisma.user.findUnique({ where: { id } }).likes(),
 
     // Resolvers for computed fields (fields that do not exist in DB)

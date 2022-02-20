@@ -18,6 +18,7 @@ export default {
               },
             },
           },
+          exercises: true,
           likes: {
             include: {
               program: true,

@@ -23,7 +23,6 @@ export default {
           encryptedPassword = await bcrypt.hash(newPassword, 10);
         }
 
-        console.log(avatarUrl);
         const updatedUser = await prisma.user.update({
           where: {
             id: loggedInUser.id,

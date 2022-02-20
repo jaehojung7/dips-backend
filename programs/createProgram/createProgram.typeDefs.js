@@ -7,6 +7,5 @@ export default gql`
       description: String
       isPrivate: Boolean!
     ): MutationResult!
-    # createProgram(title: String!, description: String, templates: Template): MutationResult!
   }
 `;
