@@ -8,9 +8,9 @@ export default gql`
     description: String
     hashtags: [Hashtag]
     templates: [Template]
-    isPrivate: Boolean!
     createdAt: String!
     updatedAt: String!
+    isPrivate: Boolean!
     isMine: Boolean!
     isLiked: Boolean!
     likeCount: Int

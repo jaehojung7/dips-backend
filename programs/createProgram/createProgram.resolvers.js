@@ -18,11 +18,10 @@ export default {
             };
           }
 
-          // Save program with parsed hashtags
-          // Add program to the hashtags
-          let hashtagObj = [];
+          // Parse hashtags and prepare hashtagObjs
+          let hashtagObjs = [];
           if (description) {
-            hashtagObj = processHashtags(description);
+            hashtagObjs = processHashtags(description);
           }
 
           const newProgram = await prisma.program.create({
@@ -35,9 +34,9 @@ export default {
                   id: loggedInUser.id,
                 },
               },
-              ...(hashtagObj.length > 0 && {
+              ...(hashtagObjs.length > 0 && {
                 hashtags: {
-                  connectOrCreate: hashtagObj,
+                  connectOrCreate: hashtagObjs,
                 },
               }),
             },

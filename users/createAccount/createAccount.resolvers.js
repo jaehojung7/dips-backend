@@ -1,4 +1,8 @@
 import bcrypt from "bcrypt";
+import {
+  defaultExercises,
+  processExercises,
+} from "../../exercises/exercises.utils";
 import prisma from "../../prisma";
 
 export default {
@@ -16,21 +20,33 @@ export default {
             ok: false,
             error: "이메일 또는 닉네임이 이미 사용 중입니다.",
           };
-        } else {
-          // Create a new user with an encrypted password
-          const encryptedPassword = await bcrypt.hash(password, 10);
-          const newUser = await prisma.user.create({
-            data: {
-              username,
-              email,
-              password: encryptedPassword,
-            },
-          });
-          return {
-            ok: true,
-            id: newUser.id,
-          };
         }
+
+        // Create a new user with an encrypted password
+        const encryptedPassword = await bcrypt.hash(password, 10);
+
+        // Prepare exerciseObjs (default set of exercises) that will be connected to new user
+        let exerciseObjs = [];
+        if (defaultExercises) {
+          exerciseObjs = processExercises(defaultExercises);
+        }
+
+        const newUser = await prisma.user.create({
+          data: {
+            username,
+            email,
+            password: encryptedPassword,
+            ...(exerciseObjs.length > 0 && {
+              exercises: {
+                connectOrCreate: exerciseObjs,
+              },
+            }),
+          },
+        });
+        return {
+          ok: true,
+          id: newUser.id,
+        };
       } catch (e) {
         return {
           ok: false,

@@ -29,9 +29,9 @@ export default {
           };
         }
 
-        let hashtagObj = [];
+        let hashtagObjs = [];
         if (description) {
-          hashtagObj = processHashtags(description);
+          hashtagObjs = processHashtags(description);
         } else {
           description = "";
         }
@@ -45,7 +45,7 @@ export default {
             description,
             hashtags: {
               disconnect: existingProgram.hashtags,
-              connectOrCreate: hashtagObj,
+              connectOrCreate: hashtagObjs,
             },
           },
         });

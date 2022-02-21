@@ -11,9 +11,14 @@ export default {
         include: {
           programs: {
             include: {
-              templates: true,
+              templates: {
+                include: {
+                  templateSets: true,
+                },
+              },
             },
           },
+          exercises: true,
           likes: {
             include: {
               program: true,
