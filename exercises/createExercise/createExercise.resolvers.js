@@ -11,8 +11,7 @@ export default {
           if (!checkBodyPart(bodyPart)) {
             return {
               ok: false,
-              error:
-                "운동 부위가 올바르지 않습니다 (Arm, Back, Chest, Core, Leg, Shoulder 중 선택).",
+              error: "운동 부위가 올바르지 않습니다.",
             };
           }
 
