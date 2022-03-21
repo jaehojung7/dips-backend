@@ -7,7 +7,7 @@ export default gql`
     title: String!
     description: String
     hashtags: [Hashtag]
-    templates: [Template]
+    workouts: [Workout]
     createdAt: String!
     updatedAt: String!
     isPrivate: Boolean!
@@ -29,18 +29,18 @@ export default gql`
     createdAt: String!
     updatedAt: String!
   }
-  type Template {
+  type Workout {
     id: Int!
     program: Program!
-    templateIndex: Int!
+    workoutIndex: Int!
     title: String!
-    templateSets: [TemplateSet]
+    workoutSets: [WorkoutSet]
     createdAt: String!
     updatedAt: String!
   }
-  type TemplateSet {
+  type WorkoutSet {
     id: Int!
-    template: Template!
+    workout: Workout!
     exercises: [String]
     setCount: Int!
     # rir: Int

@@ -14,8 +14,8 @@ export default {
           },
         },
       }),
-    templates: ({ id }) =>
-      prisma.program.findUnique({ where: { id } }).templates(),
+    workouts: ({ id }) =>
+      prisma.program.findUnique({ where: { id } }).workouts(),
 
     // Relations for computed fields
     isMine: ({ userId }, _, { loggedInUser }) => {
@@ -30,10 +30,10 @@ export default {
       }),
   },
 
-  Template: {
+  Workout: {
     // Resolvers for relations
-    templateSets: ({ id }) =>
-      prisma.template.findUnique({ where: { id } }).templateSets(),
+    workoutSets: ({ id }) =>
+      prisma.workout.findUnique({ where: { id } }).workoutSets(),
   },
 
   Hashtag: {

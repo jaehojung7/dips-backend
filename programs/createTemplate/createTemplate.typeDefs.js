@@ -1,17 +1,17 @@
 import { gql } from "apollo-server";
 
 export default gql`
-  type CreateTemplateResult {
+  type CreateWorkoutResult {
     ok: Boolean!
     programId: Int!
-    templateIndex: Int!
+    workoutIndex: Int!
     error: String
   }
   type Mutation {
-    createTemplate(
+    createWorkout(
       programId: Int!
-      templateIndex: Int!
+      workoutIndex: Int!
       title: String!
-    ): CreateTemplateResult!
+    ): CreateWorkoutResult!
   }
 `;

@@ -2,7 +2,7 @@ import prisma from "../../prisma";
 import { protectedResolver } from "../../users/users.utils";
 import { processHashtags } from "../programs.utils";
 
-// templates should be editable later
+// workouts should be editable later
 export default {
   Mutation: {
     editProgram: protectedResolver(
