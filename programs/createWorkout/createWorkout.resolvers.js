@@ -3,8 +3,8 @@ import { protectedResolver } from "../../users/users.utils";
 
 export default {
   Mutation: {
-    createTemplate: protectedResolver(
-      async (_, { programId, templateIndex, title }, { loggedInUser }) => {
+    createWorkout: protectedResolver(
+      async (_, { programId, workoutIndex, title }, { loggedInUser }) => {
         const existingProgram = await prisma.program.findUnique({
           where: {
             id: programId,
@@ -19,16 +19,16 @@ export default {
             error: "프로그램을 찾을 수 없습니다.",
           };
         }
-        const newTemplate = await prisma.template.create({
+        const newWorkout = await prisma.workout.create({
           data: {
             program: {
               connect: {
                 id: programId,
               },
             },
-            templateIndex,
+            workoutIndex,
             title,
-            // Let's think about if a template has to be connected to a user
+            // Let's think about if a workout has to be connected to a user
             // In this case, Prisma model has to be updated as well
             // user: {
             //   connect: {
@@ -40,7 +40,7 @@ export default {
         return {
           ok: true,
           programId,
-          templateIndex,
+          workoutIndex,
         };
       }
     ),

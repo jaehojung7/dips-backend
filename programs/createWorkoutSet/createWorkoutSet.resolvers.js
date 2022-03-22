@@ -3,32 +3,32 @@ import { protectedResolver } from "../../users/users.utils";
 
 export default {
   Mutation: {
-    createTemplateSet: protectedResolver(
+    createWorkoutSet: protectedResolver(
       async (
         _,
-        { programId, templateIndex, exercise, setCount },
+        { programId, workoutIndex, exercise, setCount },
         { loggedInUser }
       ) => {
-        const existingTemplate = await prisma.template.findFirst({
+        const existingWorkout = await prisma.workout.findFirst({
           where: {
             programId,
-            templateIndex,
+            workoutIndex,
           },
           select: {
             id: true,
           },
         });
-        if (!existingTemplate) {
+        if (!existingWorkout) {
           return {
             ok: false,
             error: "템플릿을 찾을 수 없습니다.",
           };
         }
-        const newTemplateSet = await prisma.templateSet.create({
+        const newWorkoutSet = await prisma.workoutSet.create({
           data: {
-            template: {
+            workout: {
               connect: {
-                id: existingTemplate.id,
+                id: existingWorkout.id,
               },
             },
             exercise,
@@ -36,7 +36,7 @@ export default {
             // rir,
             // minReps,
             // maxReps,
-            // Let's think about if a templateSet has to be connected to a user
+            // Let's think about if a workoutSet has to be connected to a user
             // In this case, Prisma model has to be updated as well
             // user: {
             //   connect: {
@@ -47,7 +47,7 @@ export default {
         });
         return {
           ok: true,
-          id: newTemplateSet.id,
+          id: newWorkoutSet.id,
         };
       }
     ),

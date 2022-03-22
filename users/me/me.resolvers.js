@@ -11,9 +11,9 @@ export default {
         include: {
           programs: {
             include: {
-              templates: {
+              workouts: {
                 include: {
-                  templateSets: true,
+                  workoutSets: true,
                 },
               },
             },
