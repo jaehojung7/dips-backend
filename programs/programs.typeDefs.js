@@ -43,6 +43,7 @@ export default gql`
     workout: Workout!
     exercises: [String]
     setCount: Int!
+    repCount: Int
     # rir: Int
     # minReps: Int
     # maxReps: Int

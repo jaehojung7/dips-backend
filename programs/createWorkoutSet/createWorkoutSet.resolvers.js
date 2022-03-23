@@ -6,7 +6,7 @@ export default {
     createWorkoutSet: protectedResolver(
       async (
         _,
-        { programId, workoutIndex, exercise, setCount },
+        { programId, workoutIndex, exercise, setCount, repCount },
         { loggedInUser }
       ) => {
         const existingWorkout = await prisma.workout.findFirst({
@@ -33,16 +33,8 @@ export default {
             },
             exercise,
             setCount,
+            repCount,
             // rir,
-            // minReps,
-            // maxReps,
-            // Let's think about if a workoutSet has to be connected to a user
-            // In this case, Prisma model has to be updated as well
-            // user: {
-            //   connect: {
-            //     id: loggedInUser.id,
-            //   },
-            // },
           },
         });
         return {
