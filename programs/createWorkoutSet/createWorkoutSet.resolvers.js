@@ -21,7 +21,7 @@ export default {
         if (!existingWorkout) {
           return {
             ok: false,
-            error: "템플릿을 찾을 수 없습니다.",
+            error: "워크아웃을 찾을 수 없습니다.",
           };
         }
         const newWorkoutSet = await prisma.workoutSet.create({
