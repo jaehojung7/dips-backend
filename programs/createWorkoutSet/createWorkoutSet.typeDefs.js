@@ -5,8 +5,9 @@ export default gql`
     createWorkoutSet(
       programId: Int!
       workoutIndex: Int!
-      exercise: [String]
-      setCount: Int! # rir: Int # minReps: Int # maxReps: Int
+      exercise: String
+      setCount: Int!
+      repCount: Int # rir: Int
     ): MutationResult!
   }
 `;
