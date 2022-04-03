@@ -16,14 +16,21 @@ export default {
           }
 
           // If exercise exists, connect to loggedInUser
-          const existingExercise = await prisma.exercise.findFirst({
+          const existingExercise = await prisma.exercise.findUnique({
             where: {
               exercise,
-              bodyPart,
             },
           });
 
           if (existingExercise) {
+            // If bodyPart of existingExercise does not match the given bodyPart, send an error message
+            if (existingExercise.bodyPart != bodyPart) {
+              return {
+                ok: false,
+                error: `같은 이름의 종목이 이미 ${existingExercise.bodyPart} 부위 운동으로 존재합니다.`,
+              };
+            }
+
             const updatedExercise = await prisma.exercise.update({
               where: {
                 id: existingExercise.id,
