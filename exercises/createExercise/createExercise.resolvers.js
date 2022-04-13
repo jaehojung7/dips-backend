@@ -27,7 +27,7 @@ export default {
             if (existingExercise.bodyPart != bodyPart) {
               return {
                 ok: false,
-                error: `같은 이름의 종목이 이미 ${existingExercise.bodyPart} 부위 운동으로 존재합니다.`,
+                error: `같은 이름의 종목이 이미 ${existingExercise.bodyPart} 부위 운동으로 등록되어 있습니다.`,
               };
             }
 

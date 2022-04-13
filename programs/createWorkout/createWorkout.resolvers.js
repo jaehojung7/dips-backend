@@ -28,13 +28,6 @@ export default {
             },
             workoutIndex,
             title,
-            // Let's think about if a workout has to be connected to a user
-            // In this case, Prisma model has to be updated as well
-            // user: {
-            //   connect: {
-            //     id: loggedInUser.id,
-            //   },
-            // },
           },
         });
         return {

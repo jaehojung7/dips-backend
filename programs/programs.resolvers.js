@@ -14,6 +14,10 @@ export default {
           },
         },
       }),
+    likes: ({ id }) =>
+      prisma.like.count({
+        where: { programId: id },
+      }),
     workouts: ({ id }) =>
       prisma.program.findUnique({ where: { id } }).workouts(),
 
