@@ -8,9 +8,11 @@ export default gql`
     avatar: String
     programs: [Program]
     exercises: [Exercise]
+    records: [Record]
     likes: [Like]
     createdAt: String!
     updatedAt: String!
     isMyProfile: Boolean!
+    lastProgram: String
   }
 `;

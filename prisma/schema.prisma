@@ -18,6 +18,7 @@ model User {
   avatar    String?
   programs  Program[]
   exercises Exercise[]
+  records   Record[]
   likes     Like[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
@@ -30,8 +31,8 @@ model Program {
   title       String    @unique
   description String?
   hashtags    Hashtag[]
-  workouts    Workout[]
   likes       Like[]
+  workouts    Workout[]
   isPrivate   Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -73,7 +74,6 @@ model WorkoutSet {
   workout   Workout  @relation(fields: [workoutId], references: [id])
   workoutId Int
   exercise  String
-  // exercise   String[]
   setCount  Int
   repCount  Int?
   // break      Int[]
@@ -91,4 +91,39 @@ model Exercise {
   bodyPart  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Record {
+  id               Int              @id @default(autoincrement())
+  user             User             @relation(fields: [userId], references: [id])
+  userId           Int
+  title            String
+  description      String?
+  baseProgramId    Int?
+  baseWorkoutIndex Int?
+  recordExercises  RecordExercise[]
+  // isPrivate   Boolean   @default(false)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+}
+
+model RecordExercise {
+  id                  Int                 @id @default(autoincrement())
+  record              Record              @relation(fields: [recordId], references: [id])
+  recordId            Int
+  recordExerciseIndex Int
+  exercise            String
+  recordExerciseSets  RecordExerciseSet[]
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+}
+
+model RecordExerciseSet {
+  id               Int            @id @default(autoincrement())
+  recordExercise   RecordExercise @relation(fields: [recordExerciseId], references: [id])
+  recordExerciseId Int
+  weight           Int
+  repCount         Int
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
 }

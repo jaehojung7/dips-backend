@@ -7,6 +7,7 @@ export default gql`
     title: String!
     description: String
     hashtags: [Hashtag]
+    likes: [Like]
     workouts: [Workout]
     createdAt: String!
     updatedAt: String!
@@ -41,7 +42,7 @@ export default gql`
   type WorkoutSet {
     id: Int!
     workout: Workout!
-    exercises: [String]
+    exercise: String!
     setCount: Int!
     repCount: Int
     # rir: Int

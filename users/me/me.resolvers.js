@@ -19,11 +19,22 @@ export default {
             },
           },
           exercises: true,
+          records: {
+            include: {
+              recordExercises: {
+                include: {
+                  recordExerciseSets: true,
+                },
+              },
+            },
+          },
           likes: {
             include: {
               program: true,
             },
           },
+
+          // lastProgram might have be to added here
         },
       })
     ),
