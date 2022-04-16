@@ -23,6 +23,7 @@ export default gql`
   }
   type RecordExerciseSet {
     id: Int!
+    recordId: Int!
     recordExercise: RecordExercise!
     weight: Int!
     repCount: Int!
