@@ -26,6 +26,7 @@ export default {
         }
         const newWorkoutSet = await prisma.workoutSet.create({
           data: {
+            programId,
             workout: {
               connect: {
                 id: existingWorkout.id,

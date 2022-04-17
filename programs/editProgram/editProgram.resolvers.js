@@ -6,7 +6,7 @@ import { processHashtags } from "../programs.utils";
 export default {
   Mutation: {
     editProgram: protectedResolver(
-      async (_, { id, title, description }, { loggedInUser }) => {
+      async (_, { id, title, description, isPrivate }, { loggedInUser }) => {
         const existingProgram = await prisma.program.findFirst({
           where: {
             id,
@@ -27,31 +27,54 @@ export default {
             ok: false,
             error: "프로그램을 찾을 수 없습니다.",
           };
-        }
-
-        let hashtagObjs = [];
-        if (description) {
-          hashtagObjs = processHashtags(description);
+        } else if (existingProgram.userId !== loggedInUser.id) {
+          return {
+            ok: false,
+            error: "변경 권한이 없습니다.",
+          };
         } else {
-          description = "";
-        }
-
-        await prisma.program.update({
-          where: {
-            id,
-          },
-          data: {
-            title,
-            description,
-            hashtags: {
-              disconnect: existingProgram.hashtags,
-              connectOrCreate: hashtagObjs,
+          // Delete existing workouts and workoutSets,
+          // so that new workouts and workoutSets can be created and connected
+          const deleteWorkoutSets = await prisma.workoutSet.deleteMany({
+            where: {
+              programId: existingProgram.id,
             },
-          },
-        });
-        return {
-          ok: true,
-        };
+          });
+
+          const deleteWorkouts = await prisma.workout.deleteMany({
+            where: {
+              programId: existingProgram.id,
+            },
+          });
+
+          // Process hashtags in the updated description
+          let hashtagObjs = [];
+          if (description) {
+            hashtagObjs = processHashtags(description);
+          } else {
+            description = "";
+          }
+
+          // Update title, description, and hashtags
+          const updatedProgram = await prisma.program.update({
+            where: {
+              id,
+            },
+            data: {
+              title,
+              description,
+              isPrivate,
+              hashtags: {
+                disconnect: existingProgram.hashtags,
+                connectOrCreate: hashtagObjs,
+              },
+            },
+          });
+          return {
+            ok: true,
+            id: updatedProgram.id,
+          };
+        }
       }
     ),
   },

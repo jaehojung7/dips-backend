@@ -26,6 +26,7 @@ export default {
         }
         const newRecordExerciseSet = await prisma.recordExerciseSet.create({
           data: {
+            recordId,
             recordExercise: {
               connect: {
                 id: existingRecordExercise.id,

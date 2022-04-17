@@ -41,6 +41,7 @@ export default gql`
   }
   type WorkoutSet {
     id: Int!
+    programId: Int!
     workout: Workout!
     exercise: String!
     setCount: Int!

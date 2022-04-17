@@ -23,7 +23,19 @@ export default {
           error: "삭제 권한이 없습니다.",
         };
       } else {
-        await prisma.program.delete({
+        const deleteWorkoutSets = await prisma.workoutSet.deleteMany({
+          where: {
+            programId: existingProgram.id,
+          },
+        });
+
+        const deleteWorkouts = await prisma.workout.deleteMany({
+          where: {
+            programId: existingProgram.id,
+          },
+        });
+
+        const deleteProgram = await prisma.program.delete({
           where: {
             id,
           },

@@ -71,6 +71,7 @@ model Workout {
 
 model WorkoutSet {
   id        Int      @id @default(autoincrement())
+  programId Int
   workout   Workout  @relation(fields: [workoutId], references: [id])
   workoutId Int
   exercise  String
@@ -120,6 +121,7 @@ model RecordExercise {
 
 model RecordExerciseSet {
   id               Int            @id @default(autoincrement())
+  recordId         Int
   recordExercise   RecordExercise @relation(fields: [recordExerciseId], references: [id])
   recordExerciseId Int
   weight           Int
