@@ -2,7 +2,6 @@ import prisma from "../../prisma";
 import { protectedResolver } from "../../users/users.utils";
 import { processHashtags } from "../programs.utils";
 
-// workouts should be editable later
 export default {
   Mutation: {
     editProgram: protectedResolver(
@@ -34,7 +33,7 @@ export default {
           };
         } else {
           // Delete existing workouts and workoutSets,
-          // so that new workouts and workoutSets can be created and connected
+          // so that updated workouts and workoutSets can be connected to the program
           const deleteWorkoutSets = await prisma.workoutSet.deleteMany({
             where: {
               programId: existingProgram.id,

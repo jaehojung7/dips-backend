@@ -6,9 +6,16 @@ export default {
     // These resolvers use root (User) information
     // Reminder: (root, args, context, info)
     programs: ({ id }) => prisma.user.findUnique({ where: { id } }).programs(),
+    // Sort exercises (1) by body part and then (2) in alphabetical order
     exercises: ({ id }) =>
-      prisma.user.findUnique({ where: { id } }).exercises(),
-    records: ({ id }) => prisma.user.findUnique({ where: { id } }).records(),
+      prisma.user.findUnique({ where: { id } }).exercises({
+        orderBy: [{ bodyPart: "asc" }, { exercise: "asc" }],
+      }),
+    // Sort records in reverse chronological order
+    records: ({ id }) =>
+      prisma.user
+        .findUnique({ where: { id } })
+        .records({ orderBy: { createdAt: "desc" } }),
     likes: ({ id }) => prisma.user.findUnique({ where: { id } }).likes(),
 
     // Resolvers for computed fields (fields that do not exist in DB)
