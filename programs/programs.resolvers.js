@@ -19,7 +19,9 @@ export default {
         where: { programId: id },
       }),
     workouts: ({ id }) =>
-      prisma.program.findUnique({ where: { id } }).workouts(),
+      prisma.program
+        .findUnique({ where: { id } })
+        .workouts({ orderBy: { createdAt: "asc" } }),
 
     // Relations for computed fields
     isMine: ({ userId }, _, { loggedInUser }) => {
@@ -37,7 +39,9 @@ export default {
   Workout: {
     // Resolvers for relations
     workoutSets: ({ id }) =>
-      prisma.workout.findUnique({ where: { id } }).workoutSets(),
+      prisma.workout
+        .findUnique({ where: { id } })
+        .workoutSets({ orderBy: { createdAt: "asc" } }),
   },
 
   Hashtag: {
