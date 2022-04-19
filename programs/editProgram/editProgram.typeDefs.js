@@ -1,6 +1,5 @@
 import { gql } from "apollo-server";
 
-// workouts should be editable later
 export default gql`
   type Mutation {
     editProgram(

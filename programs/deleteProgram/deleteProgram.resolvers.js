@@ -23,6 +23,8 @@ export default {
           error: "삭제 권한이 없습니다.",
         };
       } else {
+        // Delete workoutSets and workouts first,
+        // to make the program deletable
         const deleteWorkoutSets = await prisma.workoutSet.deleteMany({
           where: {
             programId: existingProgram.id,

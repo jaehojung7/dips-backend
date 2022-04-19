@@ -23,6 +23,8 @@ export default {
           error: "삭제 권한이 없습니다.",
         };
       } else {
+        // Delete recordExerciseSets and recordExercises first,
+        // to make the record deletable
         const deleteRecordExerciseSets =
           await prisma.recordExerciseSet.deleteMany({
             where: {
