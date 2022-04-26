@@ -8,9 +8,6 @@ export default {
         where: {
           id,
         },
-        select: {
-          userId: true,
-        },
       });
       if (!existingRecord) {
         return {
@@ -45,6 +42,7 @@ export default {
         });
         return {
           ok: true,
+          id: deleteRecord.id,
         };
       }
     }),

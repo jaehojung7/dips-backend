@@ -8,9 +8,6 @@ export default {
         where: {
           id,
         },
-        select: {
-          userId: true,
-        },
       });
       if (!existingProgram) {
         return {
@@ -44,6 +41,7 @@ export default {
         });
         return {
           ok: true,
+          id: deleteProgram.id,
         };
       }
     }),
