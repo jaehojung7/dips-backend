@@ -10,6 +10,10 @@ export default {
             id,
             userId: loggedInUser.id,
           },
+          select: {
+            userId: true,
+            id: true,
+          },
         });
         if (!existingRecord) {
           return {

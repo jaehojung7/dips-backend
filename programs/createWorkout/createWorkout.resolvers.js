@@ -9,9 +9,6 @@ export default {
           where: {
             id: programId,
           },
-          select: {
-            id: true,
-          },
         });
         if (!existingProgram) {
           return {

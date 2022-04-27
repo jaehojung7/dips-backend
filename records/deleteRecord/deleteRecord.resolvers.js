@@ -8,6 +8,10 @@ export default {
         where: {
           id,
         },
+        select: {
+          userId: true,
+          id: true,
+        },
       });
       if (!existingRecord) {
         return {

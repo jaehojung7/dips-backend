@@ -13,6 +13,7 @@ export default {
           },
 
           // Without this part, we cannot disconnect existing hashtags
+          // Relations are not included by default
           include: {
             hashtags: {
               select: {
