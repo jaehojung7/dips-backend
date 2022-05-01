@@ -5,6 +5,7 @@ export default gql`
     createWorkoutSet(
       programId: Int!
       workoutIndex: Int!
+      workoutSetIndex: Int!
       exercise: String!
       setCount: Int!
       repCount: Int # rir: Int

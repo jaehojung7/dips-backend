@@ -5,6 +5,7 @@ export default gql`
     createRecordExerciseSet(
       recordId: Int!
       recordExerciseIndex: Int!
+      recordExerciseSetIndex: Int!
       weight: Int!
       repCount: Int! # rir: Int
     ): MutationResult!

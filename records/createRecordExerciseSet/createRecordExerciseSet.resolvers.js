@@ -6,7 +6,13 @@ export default {
     createRecordExerciseSet: protectedResolver(
       async (
         _,
-        { recordId, recordExerciseIndex, weight, repCount },
+        {
+          recordId,
+          recordExerciseIndex,
+          recordExerciseSetIndex,
+          weight,
+          repCount,
+        },
         { loggedInUser }
       ) => {
         const existingRecordExercise = await prisma.recordExercise.findFirst({
@@ -32,6 +38,7 @@ export default {
                 id: existingRecordExercise.id,
               },
             },
+            recordExerciseSetIndex,
             weight,
             repCount,
             // rir,

@@ -43,6 +43,7 @@ export default gql`
     id: Int!
     programId: Int!
     workout: Workout!
+    workoutSetIndex: Int!
     exercise: String!
     setCount: Int!
     repCount: Int

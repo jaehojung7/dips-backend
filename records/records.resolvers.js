@@ -7,7 +7,7 @@ export default {
     recordExercises: ({ id }) =>
       prisma.record
         .findUnique({ where: { id } })
-        .recordExercises({ orderBy: { createdAt: "asc" } }),
+        .recordExercises({ orderBy: { recordExerciseIndex: "asc" } }),
   },
 
   RecordExercise: {
@@ -15,6 +15,6 @@ export default {
     recordExerciseSets: ({ id }) =>
       prisma.recordExercise
         .findUnique({ where: { id } })
-        .recordExerciseSets({ orderBy: { createdAt: "asc" } }),
+        .recordExerciseSets({ orderBy: { recordExerciseSetIndex: "asc" } }),
   },
 };
