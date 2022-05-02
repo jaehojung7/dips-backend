@@ -70,19 +70,20 @@ model Workout {
 }
 
 model WorkoutSet {
-  id        Int      @id @default(autoincrement())
-  programId Int
-  workout   Workout  @relation(fields: [workoutId], references: [id])
-  workoutId Int
-  exercise  String
-  setCount  Int
-  repCount  Int?
+  id              Int      @id @default(autoincrement())
+  programId       Int
+  workout         Workout  @relation(fields: [workoutId], references: [id])
+  workoutId       Int
+  workoutSetIndex Int
+  exercise        String
+  setCount        Int
+  repCount        Int?
   // break      Int[]
   // rir        Int?
   // minReps    Int?
   // maxReps    Int?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 model Exercise {
@@ -120,12 +121,13 @@ model RecordExercise {
 }
 
 model RecordExerciseSet {
-  id               Int            @id @default(autoincrement())
-  recordId         Int
-  recordExercise   RecordExercise @relation(fields: [recordExerciseId], references: [id])
-  recordExerciseId Int
-  weight           Int
-  repCount         Int
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
+  id                     Int            @id @default(autoincrement())
+  recordId               Int
+  recordExercise         RecordExercise @relation(fields: [recordExerciseId], references: [id])
+  recordExerciseId       Int
+  recordExerciseSetIndex Int
+  weight                 Int
+  repCount               Int
+  createdAt              DateTime       @default(now())
+  updatedAt              DateTime       @updatedAt
 }

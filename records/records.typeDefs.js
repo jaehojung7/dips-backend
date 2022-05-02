@@ -25,6 +25,7 @@ export default gql`
     id: Int!
     recordId: Int!
     recordExercise: RecordExercise!
+    recordExerciseSetIndex: Int!
     weight: Int!
     repCount: Int!
     createdAt: String!

@@ -6,7 +6,14 @@ export default {
     createWorkoutSet: protectedResolver(
       async (
         _,
-        { programId, workoutIndex, exercise, setCount, repCount },
+        {
+          programId,
+          workoutIndex,
+          workoutSetIndex,
+          exercise,
+          setCount,
+          repCount,
+        },
         { loggedInUser }
       ) => {
         const existingWorkout = await prisma.workout.findFirst({
@@ -32,6 +39,7 @@ export default {
                 id: existingWorkout.id,
               },
             },
+            workoutSetIndex,
             exercise,
             setCount,
             repCount,
