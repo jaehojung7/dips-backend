@@ -46,22 +46,5 @@ export default {
       );
       return recentProgramBasedRecord.baseWorkoutIndex;
     },
-    // nextWorkoutIndex: async ({ id }) => {
-    //   const records = await prisma.user
-    //     .findUnique({ where: { id } })
-    //     .records({ orderBy: { createdAt: "desc" } });
-    //   const recentProgramBasedRecord = records.find(
-    //     (record) => record.baseProgramId !== null
-    //   );
-    //   const recentProgram = await prisma.program.findUnique({
-    //     where: { id: recentProgramBasedRecord.baseProgramId },
-    //   });
-    //   const recentWorkoutIndex = recentProgramBasedRecord.baseWorkoutIndex;
-    // if (recentWorkoutIndex < recentProgram.workouts.length - 1) {
-    //   return recentWorkoutIndex + 1;
-    // } else if (recentWorkoutIndex == recentProgram.workouts.length - 1) {
-    //   return 0;
-    // }
-    // },
   },
 };
