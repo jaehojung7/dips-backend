@@ -13,6 +13,8 @@ export default gql`
     createdAt: String!
     updatedAt: String!
     isMyProfile: Boolean!
-    lastProgram: String
+    recentProgram: Program
+    recentWorkoutIndex: Int
+    # nextWorkoutIndex: Int
   }
 `;
