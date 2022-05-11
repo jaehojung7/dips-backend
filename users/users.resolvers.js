@@ -25,8 +25,26 @@ export default {
       }
       return id === loggedInUser.id;
     },
-    // lastProgram:
-    // Use the latest non-null baseProgramId to find the title (string) of the most recently used program
-    // Use async-await (refer to isFollowing field on Instagram-clone)
+    recentProgram: async ({ id }) => {
+      const records = await prisma.user
+        .findUnique({ where: { id } })
+        .records({ orderBy: { createdAt: "desc" } });
+      const recentProgramBasedRecord = records.find(
+        (record) => record.baseProgramId !== null
+      );
+      const recentProgram = await prisma.program.findUnique({
+        where: { id: recentProgramBasedRecord.baseProgramId },
+      });
+      return recentProgram;
+    },
+    recentWorkoutIndex: async ({ id }) => {
+      const records = await prisma.user
+        .findUnique({ where: { id } })
+        .records({ orderBy: { createdAt: "desc" } });
+      const recentProgramBasedRecord = records.find(
+        (record) => record.baseProgramId !== null
+      );
+      return recentProgramBasedRecord.baseWorkoutIndex;
+    },
   },
 };
