@@ -5,6 +5,7 @@ export default gql`
     id: Int!
     user: User!
     title: String!
+    date: String!
     description: String
     baseProgramId: Int
     baseWorkoutIndex: Int

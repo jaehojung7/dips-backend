@@ -29,22 +29,38 @@ export default {
       const records = await prisma.user
         .findUnique({ where: { id } })
         .records({ orderBy: { createdAt: "desc" } });
-      const recentProgramBasedRecord = records.find(
-        (record) => record.baseProgramId !== null
-      );
-      const recentProgram = await prisma.program.findUnique({
-        where: { id: recentProgramBasedRecord.baseProgramId },
-      });
+      if (records) {
+        const recentProgramBasedRecord = records.find(
+          (record) => record.baseProgramId !== null
+        );
+        if (recentProgramBasedRecord) {
+          const recentProgram = await prisma.program.findUnique({
+            where: { id: recentProgramBasedRecord.baseProgramId },
+          });
+        } else {
+          return null;
+        }
+      } else {
+        return null;
+      }
       return recentProgram;
     },
     recentWorkoutIndex: async ({ id }) => {
       const records = await prisma.user
         .findUnique({ where: { id } })
         .records({ orderBy: { createdAt: "desc" } });
-      const recentProgramBasedRecord = records.find(
-        (record) => record.baseProgramId !== null
-      );
-      return recentProgramBasedRecord.baseWorkoutIndex;
+      if (records) {
+        const recentProgramBasedRecord = records.find(
+          (record) => record.baseProgramId !== null
+        );
+        if (recentProgramBasedRecord) {
+          return recentProgramBasedRecord.baseWorkoutIndex;
+        } else {
+          return null;
+        }
+      } else {
+        return null;
+      }
     },
   },
 };
