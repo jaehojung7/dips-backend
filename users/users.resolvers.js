@@ -37,13 +37,11 @@ export default {
           const recentProgram = await prisma.program.findUnique({
             where: { id: recentProgramBasedRecord.baseProgramId },
           });
-        } else {
-          return null;
+          return recentProgram;
         }
-      } else {
         return null;
       }
-      return recentProgram;
+      return null;
     },
     recentWorkoutIndex: async ({ id }) => {
       const records = await prisma.user
@@ -55,12 +53,10 @@ export default {
         );
         if (recentProgramBasedRecord) {
           return recentProgramBasedRecord.baseWorkoutIndex;
-        } else {
-          return null;
         }
-      } else {
         return null;
       }
+      return null;
     },
   },
 };
