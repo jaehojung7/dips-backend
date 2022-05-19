@@ -7,6 +7,9 @@ export default {
     createExercise: protectedResolver(
       async (_, { exercise, bodyPart }, { loggedInUser }) => {
         try {
+          // Convert exercise to uppercase letters
+          const exerciseUpperCase = exercise.toUpperCase();
+
           // Check if body part is correct
           if (!checkBodyPart(bodyPart)) {
             return {
@@ -18,7 +21,7 @@ export default {
           // If exercise exists, connect to loggedInUser
           const existingExercise = await prisma.exercise.findUnique({
             where: {
-              exercise,
+              exercise: exerciseUpperCase,
             },
           });
 
@@ -53,7 +56,7 @@ export default {
           // If exercise does not exist, create one
           const newExercise = await prisma.exercise.create({
             data: {
-              exercise,
+              exercise: exerciseUpperCase,
               bodyPart,
               users: {
                 connect: {

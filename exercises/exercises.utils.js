@@ -1,8 +1,8 @@
 // Default list of exercises
 export const defaultExercises = [
-  { exercise: "Bench press", bodyPart: "Chest" },
-  { exercise: "Dip", bodyPart: "Chest" },
-  { exercise: "Pull-up (overhand grip)", bodyPart: "Chest" },
+  { exercise: "BENCH PRESS", bodyPart: "Chest" },
+  { exercise: "DIP", bodyPart: "Chest" },
+  { exercise: "PULL-UP (OVERHAND GRIP)", bodyPart: "Chest" },
 ];
 
 // Create exercise objects for default exercises
