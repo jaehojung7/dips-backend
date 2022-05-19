@@ -30,6 +30,26 @@ export default {
       }
       return userId === loggedInUser.id;
     },
+    isLiked: async ({ id }, _, { loggedInUser }) => {
+      if (!loggedInUser) {
+        return false;
+      }
+      const like = await prisma.like.findUnique({
+        where: {
+          programId_userId: {
+            programId: id,
+            userId: loggedInUser.id,
+          },
+        },
+        select: {
+          id: true,
+        },
+      });
+      if (like) {
+        return true;
+      }
+      return false;
+    },
     likeCount: ({ id }) =>
       prisma.like.count({
         where: { programId: id },
