@@ -5,7 +5,7 @@ import { processHashtags } from "../programs.utils";
 export default {
   Mutation: {
     createProgram: protectedResolver(
-      async (_, { title, description, isPrivate }, { loggedInUser }) => {
+      async (_, { title, description, isPublic }, { loggedInUser }) => {
         try {
           // Check if an existing program has the same title
           const existingProgram = await prisma.program.findFirst({
@@ -28,7 +28,7 @@ export default {
             data: {
               title,
               description,
-              isPrivate,
+              isPublic,
               user: {
                 connect: {
                   id: loggedInUser.id,

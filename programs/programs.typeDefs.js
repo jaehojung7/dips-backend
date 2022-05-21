@@ -11,7 +11,7 @@ export default gql`
     workouts: [Workout]
     createdAt: String!
     updatedAt: String!
-    isPrivate: Boolean!
+    isPublic: Boolean!
     isMine: Boolean!
     isLiked: Boolean!
     likeCount: Int

@@ -5,7 +5,7 @@ import { processHashtags } from "../programs.utils";
 export default {
   Mutation: {
     editProgram: protectedResolver(
-      async (_, { id, title, description, isPrivate }, { loggedInUser }) => {
+      async (_, { id, title, description, isPublic }, { loggedInUser }) => {
         const existingProgram = await prisma.program.findFirst({
           where: {
             id,
@@ -63,7 +63,7 @@ export default {
             data: {
               title,
               description,
-              isPrivate,
+              isPublic,
               hashtags: {
                 disconnect: existingProgram.hashtags,
                 connectOrCreate: hashtagObjs,

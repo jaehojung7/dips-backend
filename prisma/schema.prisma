@@ -33,7 +33,7 @@ model Program {
   hashtags    Hashtag[]
   likes       Like[]
   workouts    Workout[]
-  isPrivate   Boolean   @default(false)
+  isPublic   Boolean   @default(false)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
@@ -105,7 +105,7 @@ model Record {
   baseProgramId    Int?
   baseWorkoutIndex Int?
   recordExercises  RecordExercise[]
-  // isPrivate   Boolean   @default(false)
+  // isPublic   Boolean   @default(false)
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
 }

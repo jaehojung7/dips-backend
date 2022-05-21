@@ -5,7 +5,7 @@ export default gql`
     createProgram(
       title: String!
       description: String
-      isPrivate: Boolean!
+      isPublic: Boolean!
     ): MutationResult!
   }
 `;

@@ -13,7 +13,7 @@ export default {
                 id: loggedInUser != null ? loggedInUser.id : undefined,
               },
             },
-            { isPrivate: false },
+            { isPublic: false },
           ],
         },
       }),

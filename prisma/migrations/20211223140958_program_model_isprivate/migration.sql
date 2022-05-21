@@ -6,4 +6,4 @@
 */
 -- AlterTable
 ALTER TABLE "Program" DROP COLUMN "private",
-ADD COLUMN     "isPrivate" BOOLEAN NOT NULL DEFAULT false;
+ADD COLUMN     "isPublic" BOOLEAN NOT NULL DEFAULT false;

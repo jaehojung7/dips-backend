@@ -6,7 +6,7 @@ export default gql`
       id: Int!
       title: String!
       description: String
-      isPrivate: Boolean!
+      isPublic: Boolean!
     ): MutationResult!
   }
 `;
