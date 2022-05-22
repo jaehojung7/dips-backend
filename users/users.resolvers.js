@@ -5,7 +5,11 @@ export default {
     // Resolvers for relations
     // These resolvers use root (User) information
     // Reminder: (root, args, context, info)
-    programs: ({ id }) => prisma.user.findUnique({ where: { id } }).programs(),
+    // Sort programs in reverse chronological order
+    programs: ({ id }) =>
+      prisma.user
+        .findUnique({ where: { id } })
+        .programs({ orderBy: { updatedAt: "desc" } }),
     // Sort exercises (1) by body part and then (2) in alphabetical order
     exercises: ({ id }) =>
       prisma.user.findUnique({ where: { id } }).exercises({
@@ -16,7 +20,11 @@ export default {
       prisma.user
         .findUnique({ where: { id } })
         .records({ orderBy: { createdAt: "desc" } }),
-    likes: ({ id }) => prisma.user.findUnique({ where: { id } }).likes(),
+    // Sort programs in reverse chronological order
+    likes: ({ id }) =>
+      prisma.user
+        .findUnique({ where: { id } })
+        .likes({ orderBy: { createdAt: "desc" } }),
 
     // Resolvers for computed fields (fields that do not exist in DB)
     isMyProfile: ({ id }, _, { loggedInUser }) => {
