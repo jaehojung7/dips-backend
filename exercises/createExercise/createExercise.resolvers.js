@@ -19,10 +19,12 @@ export default {
           }
 
           // If user does not have exercise yet, create new exercise
-          const existingExercise = await prisma.exercise.findFirst({
+          const existingExercise = await prisma.exercise.findUnique({
             where: {
-              userId: loggedInUser.id,
-              exercise: exerciseUpperCase,
+              exercise_userId: {
+                userId: loggedInUser.id,
+                exercise: exerciseUpperCase,
+              },
             },
           });
 
