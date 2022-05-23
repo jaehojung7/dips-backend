@@ -30,7 +30,7 @@ export default {
                   id: loggedInUser != null ? loggedInUser.id : undefined,
                 },
               },
-              { isPublic: false },
+              { isPublic: true },
             ],
           },
         },
