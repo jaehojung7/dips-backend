@@ -8,10 +8,9 @@ export default {
         where: {
           id,
         },
-
-        // Without this part, we cannot disconnect exercise from user
-        include: {
-          users: true,
+        select: {
+          userId: true,
+          id: true,
         },
       });
 
@@ -20,23 +19,22 @@ export default {
           ok: false,
           error: "해당 종목을 찾을 수 없습니다.",
         };
+      } else if (existingExercise.userId !== loggedInUser.id) {
+        return {
+          ok: false,
+          error: "삭제 권한이 없습니다.",
+        };
       }
 
-      await prisma.exercise.update({
+      const deleteExercise = await prisma.exercise.delete({
         where: {
           id,
-        },
-        data: {
-          users: {
-            disconnect: {
-              id: loggedInUser.id,
-            },
-          },
         },
       });
 
       return {
         ok: true,
+        id: deleteExercise.id,
       };
     }),
   },
