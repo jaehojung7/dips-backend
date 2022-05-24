@@ -25,22 +25,18 @@ export default {
         // Create a new user with an encrypted password
         const encryptedPassword = await bcrypt.hash(password, 10);
 
-        // Prepare exerciseObjs (default set of exercises) that will be connected to new user
-        let exerciseObjs = [];
-        if (defaultExercises) {
-          exerciseObjs = processExercises(defaultExercises);
-        }
+        // // Prepare exerciseObjs (default set of exercises) that will be connected to new user
+        // let exerciseObjs = [];
+        // if (defaultExercises) {
+        //   exerciseObjs = processExercises(defaultExercises);
+        // }
 
         const newUser = await prisma.user.create({
           data: {
             username,
             email,
             password: encryptedPassword,
-            ...(exerciseObjs.length > 0 && {
-              exercises: {
-                connectOrCreate: exerciseObjs,
-              },
-            }),
+            exercises: { create: defaultExercises },
           },
         });
         return {

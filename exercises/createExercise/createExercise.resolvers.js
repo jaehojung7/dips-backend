@@ -18,53 +18,35 @@ export default {
             };
           }
 
-          // If exercise exists, connect to loggedInUser
+          // If user does not have exercise yet, create new exercise
           const existingExercise = await prisma.exercise.findUnique({
             where: {
-              exercise: exerciseUpperCase,
+              exercise_userId: {
+                userId: loggedInUser.id,
+                exercise: exerciseUpperCase,
+              },
             },
           });
 
           if (existingExercise) {
-            // If bodyPart of existingExercise does not match the given bodyPart, send an error message
-            if (existingExercise.bodyPart != bodyPart) {
-              return {
-                ok: false,
-                error: `같은 이름의 종목이 이미 ${existingExercise.bodyPart} 부위 운동으로 등록되어 있습니다.`,
-              };
-            }
-
-            const updatedExercise = await prisma.exercise.update({
-              where: {
-                id: existingExercise.id,
-              },
-              data: {
-                users: {
-                  connect: {
-                    id: loggedInUser.id,
-                  },
-                },
-              },
-            });
-
             return {
-              ok: true,
-              id: updatedExercise.id,
+              ok: false,
+              error: `같은 이름의 종목이 이미 ${existingExercise.bodyPart} 부위 운동으로 등록되어 있습니다.`,
             };
           }
 
-          // If exercise does not exist, create one
           const newExercise = await prisma.exercise.create({
             data: {
               exercise: exerciseUpperCase,
               bodyPart,
-              users: {
+              user: {
                 connect: {
                   id: loggedInUser.id,
                 },
               },
             },
           });
+
           return {
             ok: true,
             id: newExercise.id,

@@ -1,22 +1,27 @@
 // Default list of exercises
 export const defaultExercises = [
-  { exercise: "BENCH PRESS", bodyPart: "Chest" },
+  { exercise: "ARM CURL", bodyPart: "Arm" },
+  { exercise: "TRICEP EXTENSION", bodyPart: "Arm" },
+  { exercise: "BENT-OVER ROW", bodyPart: "Back" },
+  { exercise: "LAT PULL-DOWN", bodyPart: "Back" },
+  { exercise: "PULL-UP (OVERHAND GRIP)", bodyPart: "Back" },
+  { exercise: "PULL-UP (PARALLEL GRIP)", bodyPart: "Back" },
+  { exercise: "SEATED ROW", bodyPart: "Back" },
+  { exercise: "BENCH PRESS (FLAT)", bodyPart: "Chest" },
+  { exercise: "BENCH PRESS (INCLINED)", bodyPart: "Chest" },
   { exercise: "DIP", bodyPart: "Chest" },
-  { exercise: "PULL-UP (OVERHAND GRIP)", bodyPart: "Chest" },
+  { exercise: "PUSH-UP", bodyPart: "Chest" },
+  { exercise: "CRUNCH", bodyPart: "Core" },
+  { exercise: "DEADLIFT (ROMANIAN)", bodyPart: "Core" },
+  { exercise: "DEADLIFT (CONVENTIONAL)", bodyPart: "Core" },
+  { exercise: "SIT-UP", bodyPart: "Core" },
+  { exercise: "LEG CURL", bodyPart: "Leg" },
+  { exercise: "LEG EXTENSION", bodyPart: "Leg" },
+  { exercise: "SQUAT", bodyPart: "Leg" },
+  { exercise: "FRONT LATERAL RAISE", bodyPart: "Shoulder" },
+  { exercise: "OVERHEAD PRESS", bodyPart: "Shoulder" },
+  { exercise: "SIDE LATERAL RAISE", bodyPart: "Shoulder" },
 ];
-
-// Create exercise objects for default exercises
-export const processExercises = (exerciseArray) => {
-  return exerciseArray.map((exerciseObj) => ({
-    where: {
-      exercise: exerciseObj["exercise"],
-    },
-    create: {
-      exercise: exerciseObj["exercise"],
-      bodyPart: exerciseObj["bodyPart"],
-    },
-  }));
-};
 
 // Check if bodyPart is one of the predefined options
 export const checkBodyPart = (bodyPart) => {
