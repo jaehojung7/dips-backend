@@ -1,8 +1,5 @@
 import bcrypt from "bcrypt";
-import {
-  defaultExercises,
-  processExercises,
-} from "../../exercises/exercises.utils";
+import { defaultExercises } from "../../exercises/exercises.utils";
 import prisma from "../../prisma";
 
 export default {
@@ -24,12 +21,6 @@ export default {
 
         // Create a new user with an encrypted password
         const encryptedPassword = await bcrypt.hash(password, 10);
-
-        // // Prepare exerciseObjs (default set of exercises) that will be connected to new user
-        // let exerciseObjs = [];
-        // if (defaultExercises) {
-        //   exerciseObjs = processExercises(defaultExercises);
-        // }
 
         const newUser = await prisma.user.create({
           data: {
