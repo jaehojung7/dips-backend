@@ -26,8 +26,13 @@ export default {
         };
       }
 
-      // Delete workoutSets and workouts first,
-      // to make the program deletable
+      // Delete likes,  workoutSets, and workouts, to make the program deletable
+      const deleteLikes = await prisma.like.deleteMany({
+        where: {
+          programId: existingProgram.id,
+        },
+      });
+
       const deleteWorkoutSets = await prisma.workoutSet.deleteMany({
         where: {
           programId: existingProgram.id,
