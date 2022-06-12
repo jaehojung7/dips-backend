@@ -46,10 +46,7 @@ export default gql`
     workoutSetIndex: Int!
     exercise: String!
     setCount: Int!
-    repCount: Int
-    # rir: Int
-    # minReps: Int
-    # maxReps: Int
+    repCount: Int!
     createdAt: String!
     updatedAt: String!
   }

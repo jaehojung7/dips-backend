@@ -10,7 +10,7 @@ export default {
       if (!user) {
         return {
           ok: false,
-          error: "이메일이 존재하지 않습니다.",
+          error: "Incorrect email or password.",
         };
       }
 
@@ -19,7 +19,7 @@ export default {
       if (!passwordOk) {
         return {
           ok: false,
-          error: "패스워드가 일치하지 않습니다.",
+          error: "Incorrect email or password.",
         };
       }
 

@@ -14,7 +14,7 @@ export default {
           if (existingProgram) {
             return {
               ok: false,
-              error: "같은 이름의 프로그램이 이미 존재합니다.",
+              error: "Program title already exists",
             };
           }
 

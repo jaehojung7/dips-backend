@@ -15,7 +15,7 @@ export default {
         if (existingUser) {
           return {
             ok: false,
-            error: "이메일 또는 닉네임이 이미 사용 중입니다.",
+            error: "Username or email already exists",
           };
         }
 

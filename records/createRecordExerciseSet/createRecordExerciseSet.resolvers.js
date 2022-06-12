@@ -41,7 +41,6 @@ export default {
             recordExerciseSetIndex,
             weight,
             repCount,
-            // rir,
           },
         });
         return {

@@ -7,7 +7,7 @@ export default gql`
       recordExerciseIndex: Int!
       recordExerciseSetIndex: Int!
       weight: Int!
-      repCount: Int! # rir: Int
+      repCount: Int!
     ): MutationResult!
   }
 `;

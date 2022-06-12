@@ -77,7 +77,7 @@ model WorkoutSet {
   workoutSetIndex Int
   exercise        String
   setCount        Int
-  repCount        Int?
+  repCount        Int
   // break      Int[]
   // rir        Int?
   // minReps    Int?

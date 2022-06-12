@@ -43,7 +43,6 @@ export default {
             exercise,
             setCount,
             repCount,
-            // rir,
           },
         });
         return {
