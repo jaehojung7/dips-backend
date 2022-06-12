@@ -14,7 +14,7 @@ export default {
           if (!checkBodyPart(bodyPart)) {
             return {
               ok: false,
-              error: "운동 부위가 올바르지 않습니다.",
+              error: "Bodypart is not correct",
             };
           }
 
@@ -31,7 +31,7 @@ export default {
           if (existingExercise) {
             return {
               ok: false,
-              error: `같은 이름의 종목이 이미 ${existingExercise.bodyPart} 부위 운동으로 등록되어 있습니다.`,
+              error: `Already registered with ${existingExercise.bodyPart}`,
             };
           }
 
@@ -54,7 +54,7 @@ export default {
         } catch (e) {
           return {
             ok: false,
-            error: "종목을 생성할 수 없습니다.",
+            error: "Not available to create this exercise",
           };
         }
       }

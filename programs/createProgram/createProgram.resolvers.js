@@ -48,7 +48,7 @@ export default {
         } catch (e) {
           return {
             ok: false,
-            error: "프로그램을 생성할 수 없습니다.",
+            error: "Not available to create this program",
           };
         }
       }

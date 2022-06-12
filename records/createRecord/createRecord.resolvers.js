@@ -40,7 +40,7 @@ export default {
         } catch (e) {
           return {
             ok: false,
-            error: "운동 기록을 저장할 수 없습니다.",
+            error: "Not available to save this record",
           };
         }
       }

@@ -8,7 +8,7 @@ export default gql`
       workoutSetIndex: Int!
       exercise: String!
       setCount: Int!
-      repCount: Int # rir: Int
+      repCount: Int!
     ): MutationResult!
   }
 `;

@@ -37,7 +37,7 @@ export default {
       } catch (e) {
         return {
           ok: false,
-          error: "계정을 만들 수 없습니다.",
+          error: "Not available to register this account",
         };
       }
     },
