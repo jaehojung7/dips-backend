@@ -12,7 +12,7 @@ export default {
       if (!program) {
         return {
           ok: false,
-          error: "Program not found",
+          error: "Cannot find program.",
         };
       }
       const likeObj = {

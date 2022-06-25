@@ -28,7 +28,7 @@ export default {
         if (!existingWorkout) {
           return {
             ok: false,
-            error: "워크아웃을 찾을 수 없습니다.",
+            error: "Cannot find workout.",
           };
         }
         const newWorkoutSet = await prisma.workoutSet.create({

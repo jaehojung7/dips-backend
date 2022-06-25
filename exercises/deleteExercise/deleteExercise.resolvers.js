@@ -17,12 +17,12 @@ export default {
       if (!existingExercise) {
         return {
           ok: false,
-          error: "해당 종목을 찾을 수 없습니다.",
+          error: "Cannot find exercise.",
         };
       } else if (existingExercise.userId !== loggedInUser.id) {
         return {
           ok: false,
-          error: "삭제 권한이 없습니다.",
+          error: "You are not authorized to delete this exercise.",
         };
       }
 

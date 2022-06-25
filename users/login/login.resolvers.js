@@ -10,7 +10,7 @@ export default {
       if (!user) {
         return {
           ok: false,
-          error: "Incorrect email or password.",
+          error: "Account does not exist.",
         };
       }
 
@@ -19,7 +19,7 @@ export default {
       if (!passwordOk) {
         return {
           ok: false,
-          error: "Incorrect email or password.",
+          error: "Password is not correct.",
         };
       }
 

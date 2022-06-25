@@ -18,12 +18,12 @@ export default {
         if (!existingRecord) {
           return {
             ok: false,
-            error: "기록을 찾을 수 없습니다.",
+            error: "Cannot find record.",
           };
         } else if (existingRecord.userId !== loggedInUser.id) {
           return {
             ok: false,
-            error: "변경 권한이 없습니다.",
+            error: "You are not authorized to update this record.",
           };
         } else {
           // Delete existing recordExercises and recordExerciseSets,

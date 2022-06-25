@@ -41,7 +41,7 @@ export default {
         } else {
           return {
             ok: false,
-            error: "프로필 변경이 실패하였습니다.",
+            error: "Cannot update profile.",
           };
         }
       }
