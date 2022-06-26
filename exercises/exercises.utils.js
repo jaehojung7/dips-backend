@@ -1,12 +1,14 @@
-// Default list of exercises
+// List of default programs
 export const defaultExercises = [
   { exercise: "ARM CURL", bodyPart: "Arm" },
   { exercise: "TRICEP EXTENSION", bodyPart: "Arm" },
+  { exercise: "BARBELL ROW", bodyPart: "Back" },
   { exercise: "BENT-OVER ROW", bodyPart: "Back" },
   { exercise: "LAT PULL-DOWN", bodyPart: "Back" },
   { exercise: "ONE ARM ROW", bodyPart: "Back" },
   { exercise: "PULL-UP (OVERHAND GRIP)", bodyPart: "Back" },
   { exercise: "PULL-UP (PARALLEL GRIP)", bodyPart: "Back" },
+  { exercise: "SEATED ROW", bodyPart: "Back" },
   { exercise: "BENCH PRESS (FLAT)", bodyPart: "Chest" },
   { exercise: "BENCH PRESS (INCLINED)", bodyPart: "Chest" },
   { exercise: "DIP", bodyPart: "Chest" },
@@ -15,6 +17,7 @@ export const defaultExercises = [
   { exercise: "DEADLIFT (ROMANIAN)", bodyPart: "Core" },
   { exercise: "DEADLIFT (CONVENTIONAL)", bodyPart: "Core" },
   { exercise: "SIT-UP", bodyPart: "Core" },
+  { exercise: "CALF RAISE", bodyPart: "Leg" },
   { exercise: "LEG CURL", bodyPart: "Leg" },
   { exercise: "LEG EXTENSION", bodyPart: "Leg" },
   { exercise: "SQUAT", bodyPart: "Leg" },

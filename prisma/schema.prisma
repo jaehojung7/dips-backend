@@ -71,9 +71,10 @@ model Workout {
 
 model WorkoutSet {
   id              Int      @id @default(autoincrement())
-  programId       Int
   workout         Workout  @relation(fields: [workoutId], references: [id])
   workoutId       Int
+  programId       Int?
+  workoutIndex    Int?
   workoutSetIndex Int
   exercise        String
   setCount        Int
