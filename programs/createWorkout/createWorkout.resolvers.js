@@ -13,7 +13,7 @@ export default {
         if (!existingProgram) {
           return {
             ok: false,
-            error: "프로그램을 찾을 수 없습니다.",
+            error: "Cannot find program.",
           };
         }
         const newWorkout = await prisma.workout.create({

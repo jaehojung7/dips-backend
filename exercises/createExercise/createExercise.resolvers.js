@@ -14,7 +14,7 @@ export default {
           if (!checkBodyPart(bodyPart)) {
             return {
               ok: false,
-              error: "Bodypart is not correct",
+              error: "Body part is not correct.",
             };
           }
 
@@ -31,7 +31,7 @@ export default {
           if (existingExercise) {
             return {
               ok: false,
-              error: `Already registered with ${existingExercise.bodyPart}`,
+              error: `You already have this exercise. (Body part: ${existingExercise.bodyPart})`,
             };
           }
 
@@ -54,7 +54,7 @@ export default {
         } catch (e) {
           return {
             ok: false,
-            error: "Not available to create this exercise",
+            error: "Cannot create exercise.",
           };
         }
       }

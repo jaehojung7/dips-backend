@@ -20,7 +20,7 @@ export default {
         if (!existingRecord) {
           return {
             ok: false,
-            error: "운동 기록을 찾을 수 없습니다.",
+            error: "Cannot find record.",
           };
         }
         const newRecordExercise = await prisma.recordExercise.create({

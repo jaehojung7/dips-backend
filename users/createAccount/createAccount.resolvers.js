@@ -15,7 +15,7 @@ export default {
         if (existingUser) {
           return {
             ok: false,
-            error: "Username or email already exists",
+            error: "Username or email exists already.",
           };
         }
 
@@ -37,7 +37,7 @@ export default {
       } catch (e) {
         return {
           ok: false,
-          error: "Not available to register this account",
+          error: "Cannot create account.",
         };
       }
     },

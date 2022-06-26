@@ -14,7 +14,7 @@ export default {
           if (existingProgram) {
             return {
               ok: false,
-              error: "Program title already exists",
+              error: "Program with the same title exists already.",
             };
           }
 
@@ -48,7 +48,7 @@ export default {
         } catch (e) {
           return {
             ok: false,
-            error: "Not available to create this program",
+            error: "Cannot create program.",
           };
         }
       }

@@ -27,7 +27,7 @@ export default {
         if (!existingRecordExercise) {
           return {
             ok: false,
-            error: "운동 기록에 해당 종목을 찾을 수 없습니다.",
+            error: "Cannot find matching exercise in the record.",
           };
         }
         const newRecordExerciseSet = await prisma.recordExerciseSet.create({

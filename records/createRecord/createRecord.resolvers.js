@@ -40,7 +40,7 @@ export default {
         } catch (e) {
           return {
             ok: false,
-            error: "Not available to save this record",
+            error: "Cannot save record.",
           };
         }
       }

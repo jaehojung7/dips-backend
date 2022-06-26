@@ -16,12 +16,12 @@ export default {
       if (!existingRecord) {
         return {
           ok: false,
-          error: "운동 기록을 찾을 수 없습니다.",
+          error: "Cannot find record.",
         };
       } else if (existingRecord.userId !== loggedInUser.id) {
         return {
           ok: false,
-          error: "삭제 권한이 없습니다.",
+          error: "You are not authorized to delete this record.",
         };
       } else {
         // Delete recordExerciseSets and recordExercises first,
