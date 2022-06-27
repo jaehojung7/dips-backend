@@ -126,39 +126,39 @@ export const defaultPrograms = [
 
         {
           title: "Workout 2-Pull",
-          workoutIndex: 0,
+          workoutIndex: 1,
           workoutSets: {
             create: [
               {
-                workoutIndex: 0,
+                workoutIndex: 1,
                 workoutSetIndex: 0,
                 exercise: "PULL-UP (OVERHAND GRIP)",
                 setCount: 4,
                 repCount: 8,
               },
               {
-                workoutIndex: 0,
+                workoutIndex: 1,
                 workoutSetIndex: 1,
                 exercise: "BARBELL ROW",
                 setCount: 4,
                 repCount: 8,
               },
               {
-                workoutIndex: 0,
+                workoutIndex: 1,
                 workoutSetIndex: 2,
                 exercise: "LAT PULL-DOWN",
                 setCount: 3,
                 repCount: 10,
               },
               {
-                workoutIndex: 0,
+                workoutIndex: 1,
                 workoutSetIndex: 3,
                 exercise: "SEATED ROW",
                 setCount: 3,
                 repCount: 10,
               },
               {
-                workoutIndex: 0,
+                workoutIndex: 1,
                 workoutSetIndex: 4,
                 exercise: "ARM CURL",
                 setCount: 3,
@@ -170,39 +170,39 @@ export const defaultPrograms = [
 
         {
           title: "Workout 3-Legs",
-          workoutIndex: 0,
+          workoutIndex: 2,
           workoutSets: {
             create: [
               {
-                workoutIndex: 0,
+                workoutIndex: 2,
                 workoutSetIndex: 0,
                 exercise: "SQUAT",
                 setCount: 4,
                 repCount: 8,
               },
               {
-                workoutIndex: 0,
+                workoutIndex: 2,
                 workoutSetIndex: 1,
                 exercise: "DEADLIFT (CONVENTIONAL)",
                 setCount: 4,
                 repCount: 8,
               },
               {
-                workoutIndex: 0,
+                workoutIndex: 2,
                 workoutSetIndex: 2,
                 exercise: "LEG EXTENSION",
                 setCount: 3,
                 repCount: 10,
               },
               {
-                workoutIndex: 0,
+                workoutIndex: 2,
                 workoutSetIndex: 3,
                 exercise: "LEG CURL",
                 setCount: 3,
                 repCount: 10,
               },
               {
-                workoutIndex: 0,
+                workoutIndex: 2,
                 workoutSetIndex: 4,
                 exercise: "CALF RAISE",
                 setCount: 3,
