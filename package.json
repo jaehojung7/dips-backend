@@ -1,6 +1,9 @@
 {
   "name": "dips-backend",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.13"
+  },
   "scripts": {
     "preinstall": "npx npm-force-resolutions@0.0.3",
     "dev": "nodemon --exec babel-node src/server --delay 1s",
