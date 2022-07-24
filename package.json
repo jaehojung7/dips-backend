@@ -2,7 +2,8 @@
   "name": "dips-backend",
   "version": "1.0.0",
   "engines": {
-    "node": "16.13"
+    "node": "16.13.0",
+    "npm": "8.1.0"
   },
   "scripts": {
     "preinstall": "npx npm-force-resolutions@0.0.3",
