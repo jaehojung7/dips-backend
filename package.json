@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "preinstall": "npx npm-force-resolutions@0.0.3",
-    "dev": "nodemon --exec babel-node src/server --delay 1s",
+    "dev": "nodemon --exec babel-node server --delay 1s",
     "migrate": "npx prisma migrate dev",
     "studio": "npx prisma studio",
-    "start": "node build/server",
-    "build": "babel src --out-dir build"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,8 +20,6 @@
   },
   "homepage": "https://github.com/jaehojung7/dips-backend#readme",
   "dependencies": {
-    "@babel/cli": "^7.18.9",
-    "@babel/runtime": "^7.18.9",
     "@graphql-tools/load-files": "^6.5.3",
     "@graphql-tools/merge": "^8.2.1",
     "@graphql-tools/schema": "^8.3.1",
