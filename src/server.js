@@ -12,8 +12,6 @@ const PORT = process.env.PORT;
 const apollo = new ApolloServer({
   typeDefs,
   resolvers,
-  playground: true,
-  introspection: true,
 
   // Get user token from the headers and retrieve a logged-in user with the token
   // Add the logged-in user information to context, which is carried by every executed resolver on the server
